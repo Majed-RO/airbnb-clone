@@ -5,7 +5,7 @@ import { SafeListing, SafeReservation, SafeUser } from '@/app/types';
 import { Listing, Reservation } from '@prisma/client';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
 import HeartButton from '../HeartButton';
 import Button from '../Button';
@@ -96,20 +96,20 @@ const ListingCard = ({
 					<div className="font-semibold">
 						$ {price}
 					</div>
-          {!reservation && (
-            <div className='font-light'>
-              night
-            </div>
-          )}
+					{!reservation && (
+						<div className="font-light">
+							night
+						</div>
+					)}
 				</div>
-        {onAction && actionLabel && (
-          <Button 
-            disabled={disabled}
-            small
-            label={actionLabel}
-            onClick={handleCancel}
-          />
-        )}
+				{onAction && actionLabel && (
+					<Button
+						disabled={disabled}
+						small
+						label={actionLabel}
+						onClick={handleCancel}
+					/>
+				)}
 			</div>
 		</div>
 	);

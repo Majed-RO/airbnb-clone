@@ -6,7 +6,9 @@ import EmptyState from './components/EmptyState';
 import ListingCard from './components/listings/ListingCard';
 
 interface HomeProps {
-	searchParams: IListingsParams;
+	searchParams: IListingsParams & {
+		error: string;
+	};
 }
 
 // searchparams would be empty object
@@ -19,6 +21,17 @@ export default async function Home({ searchParams }: HomeProps) {
 		return (
 			<ClientOnly>
 				<EmptyState showReset />
+			</ClientOnly>
+		);
+	}
+
+	if (searchParams.error) {
+		return (
+			<ClientOnly>
+				<EmptyState
+					title="Authentication Error"
+					subtitle="Am error happened while trying to login/ sign up, please try another email!"
+				/>
 			</ClientOnly>
 		);
 	}
