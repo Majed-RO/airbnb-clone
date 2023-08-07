@@ -11,7 +11,7 @@ interface HomeProps {
 	};
 }
 
-// searchparams would be empty object ..
+// searchparams would be empty object ...
 export default async function Home({ searchParams }: HomeProps) {
 	const listings = await getListings(searchParams);
 
